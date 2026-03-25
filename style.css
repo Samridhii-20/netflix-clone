@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ── HERO ── */
+.main {
+    background: url(assets/images/bgimg.jpg) center/cover no-repeat;
+    height: 90vh;
+    position: relative;
+
+}
+
+.main .box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.75;
+}
+
+nav {
+    width: 100%;
+    padding: 45px 150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+nav img {
+    width: 145px;
+}
+
+.btn {
+    padding: 8px 30px;
+    background: rgba(23, 23, 23, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-red {
+    background: red;
+    font-size: 20px;
+}
+
+.btn-red-sm {
+    background: red;
+}
+
+.hero {
+    height: calc(100% - 62px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero span:first-child {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.hero span:nth-child(2) {
+    font-size: 20px;
+}
+
+.hero span:nth-child(3) {
+    font-size: 16px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.email{
+    width: 350px;            
+    height: 60px;           
+    padding: 0 20px;
+    font-size: medium;
+    border-radius: 4px;
+}
+
+.hero input {
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+/* ── CURVE ── */
+.curve-divider {
+    height: 100px;
+    margin-top: -70px;
+    background: black;
+    border-top: 4px solid red;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+/* ── TRENDING SECTION ── */
+.trending {
+    padding: 40px 60px 60px;
+    position: relative;
+}
+
+.trending-title {
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* ── WRAPPER (clips overflow, holds arrow) ── */
+.trending-wrapper {
+    position: relative;
+    /* leave room on the right for the arrow */
+    padding-right: 50px;
+}
+
+/* ── SCROLLABLE ROW ── */
+.trending-row {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;        /* FIX: no vertical scroll */
+    scroll-behavior: smooth;
+    /* tall enough to show the number which extends below the card */
+    padding-bottom: 40px;
+    /* clip the bottom overflow so page doesn't grow */
+    margin-bottom: -40px;
+    align-items: flex-start;   /* all cards top-aligned */
+}
+
+.trending-row::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── CARD ── */
+.trend-card {
+    position: relative;
+    flex: 0 0 auto;
+    padding-left: 55px;
+    margin-right: -10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Extra left room for the two-digit "10" */
+.trend-card:last-child {
+    padding-left: 75px;
+}
+
+/* ── POSTER IMAGE ── */
+.trend-card img {
+    width: 155px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.trend-card:hover img {
+    transform: scale(1.06);
+}
+
+/* ── RANK NUMBER ── */
+.rank {
+    position: absolute;
+    left: 0;
+    /* sits so top ~40% of number is hidden behind/beside card, bottom peeks out */
+    bottom: -30px;
+
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 0.85;
+
+    color: #141414;
+    -webkit-text-stroke: 3px #c8c8c8;
+    text-stroke: 3px #c8c8c8;
+
+    z-index: 3;          /* in front of image */
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── RIGHT ARROW BUTTON ── */
+.scroll-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* match card height only, not the number overflow below */
+    height: 220px;
+    width: 40px;
+
+    background: rgba(20, 20, 20, 0.7);
+    color: white;
+    border: none;
+
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+
+    border-radius: 4px 0 0 4px;
+    z-index: 10;
+    opacity: 1;
+    transition: background 0.2s, opacity 0.3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── MORE REASONS TO JOIN ── */
+.reasons {
+    padding: 40px 60px 60px;
+}
+
+.reasons-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.reason-card {
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f1b35 100%);
+    border-radius: 16px;
+    padding: 28px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+.reason-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(100, 60, 180, 0.25) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* make text and icon sit above the glow */
+.reason-text,
+.reason-icon {
+    position: relative;
+    z-index: 1;
+}
+
+.reason-text h3 {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.reason-text p {
+    color: #b3b3b3;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.reason-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.reason-icon img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* ── FAQ SECTION ── */
+.faq {
+    padding: 50px 60px;
+}
+
+.faq-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* BOX */
+.faq-box {
+    margin-bottom: 10px;
+}
+
+/* QUESTION */
+.faq-question {
+    background: #2d2d2d;
+    color: white;
+    padding: 22px 25px;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #414141;
+}
+
+.faq-question span {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+/* ANSWER */
+.faq-answer {
+    background: #2d2d2d;
+    color: white;
+
+    max-height: 0;
+    overflow: hidden;
+
+    padding: 0 25px;
+    font-size: 18px;
+
+    transition: all 0.4s ease;
+}
+
+/* ACTIVE STATE */
+.faq-box.active .faq-answer {
+    max-height: 200px;
+    padding: 20px 25px;
+}
+
+.faq-box.active .faq-question span {
+    transform: rotate(45deg);
+}
+
+/* ── EMAIL SECTION ── */
+.email-section {
+    padding: 60px;
+    text-align: center;
+    color: white;
+}
+
+.email-section p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.email-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.email-box input {
+    width: 400px;
+    padding: 15px;
+    background: black;
+    border: 1px solid #444;
+    color: white;
+    font-size: 16px;
+}
+
+.email-box button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ── FOOTER ── */
+.footer {
+    padding: 50px 60px;
+    color: #b3b3b3;
+}
+
+.footer-top {
+    margin-bottom: 30px;
+}
+
+.footer-top span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* GRID */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 100px;
+    margin-bottom: 30px;
+}
+
+.footer-grid ul {
+    list-style: none;
+}
+
+.footer-grid li {
+    margin-bottom: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* LANGUAGE BUTTON */
+.lang-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* COUNTRY */
+.footer-country {
+    margin-bottom: 20px;
+}
+
+/* NOTE */
+.footer-note {
+    font-size: 13px;
+    color: #8c8c8c;
+}
+
+.footer-note span {
+    color: #0071eb;
+    cursor: pointer;
+}
